@@ -1,0 +1,15 @@
+BRHSingleLinkGeneFamilies/tmp
+TranslatePipeline2/tmp
+TranslatePipeline2/refs/*.idx
+KaKs/tmp
+
+*.fas
+.Rdata
+*.Rout
+*.gz
+*.annot
+*.idx 
+*.dmnd
+
+RunPipe.pl
+Poma.txt

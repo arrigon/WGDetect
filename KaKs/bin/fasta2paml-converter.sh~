@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# convert all fasta files in the directory to paml format
+# Fam.5611.macse.aln_DNA.fasta
+for fasta  in `ls -1 *.aln` ; do ../../bin/fasta2paml.SZ.pl $fasta  > $fasta.paml ; done
