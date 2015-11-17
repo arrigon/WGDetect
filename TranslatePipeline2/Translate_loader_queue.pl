@@ -1,11 +1,12 @@
 #!/bin/perl
 
 # Usage:
-# perl Translate_loader.pl dbase NCPU MaxUse
+# perl Translate_loader_queue.pl dbase NCPU MaxUse MinRam
 #
-# dbase = plant (use this spelling), pick protein reference database (downloaded form GenBank, May 1st 2015).
+# dbase = plant (use this spelling), pick protein reference database (downloaded from GenBank, May 1st 2015).
 # NCPU = Number of cores to be used by each process
 # MaxUse = Maximal load allowed on the computing server.
+# MinRam = Minimal RAM to leave free (Gb).
 #
 # Depends on diamond for doing blastx searches. this soft is provided in the bin/ folder.
 #

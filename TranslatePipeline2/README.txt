@@ -15,11 +15,7 @@
 1. Install Exonerate, if the copy in ./bin is not working on your OS.
 
 
-2. Install Blast
-  The present pipeline uses the older version of blast (i.e. based on formatdb and not makeblastdb)
-  It is super easy to run any newer version: 
-  update the commands into ./Translate_build.pl ; at line 40 (use makeblastdb instead of formatdb)
-  update the commands into bin/RunParseBlastx.pl; at line 24 (make sure to use blastx and get the tablular output)
+2. Install Diamond, if the copy in ./bin is not working on your OS.
 
 
 3. Add the proper protein database in ./refs
@@ -49,10 +45,12 @@
 
 
 5. Run the pipeline (run everything from the root folder)
-  perl Translate_build.pl dbase NbCPUS MaxUse
-  - dbase = database to use (either plant, invertebrate, vertebrate_mammalian, vertebrate_other or any name of your own: use this exact spelling)
-  - NbCPUS = Number of CPUs to allocate per blast search
-  - MaxUse = Maximum allowed load on the server 
+perl Translate_loader_queue.pl dbase NCPU MaxUse MinRam
+
+dbase = plant (use this spelling), pick protein reference database (downloaded from GenBank, May 1st 2015).
+NCPU = Number of cores to be used by each process
+MaxUse = Maximal load allowed on the computing server.
+MinRam = Minimal RAM to leave free (Gb).
 
 
 6. Get the results in ./data.out (added on the fly by the pipeline)
