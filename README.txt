@@ -4,6 +4,7 @@
 ### usage: ./Run_Kaks_Pipeline.sh
 ###
 ### INPUT: One fasta file containing your DNA contigs (can be anything)
+###	   To be stored in data.in/
 ###        the only limitation might be with sequence names.
 ###        there might be some conflicts with codeml if your contig names are >15-20 characters
 ###
