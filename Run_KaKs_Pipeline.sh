@@ -20,7 +20,7 @@
 ###
 ### Dependencies:
 ## OS: linux (BioLinux would embark most of the needed softs).
-## perl modules (these are standard modules, use CPAN to install them.
+## perl modules (these are standard modules, use CPAN to install them).
 # Cwd 
 # File::Basename
 # threads
@@ -37,14 +37,12 @@
 # ape
 #
 ## Stand-alone programs (most are already provided in bin/ folders of the sub-pipelines
-# blast suite: formatdb and blastall 2.2.26 & 2.2.28+ (must be installed in your server
+# blast suite: makeblastdb and blastn 2.2.28+ (must be installed in your server)
 #
 #####################################
-### Version 1.02
+### Version 1.03
 ### Nils Arrigo (Unil, Uni. of Arizona), Stephan Zoller (ETHZ) and Celine Geiser (UniNE), 2013-2015
 ### some code sections from Erik R Hanschen, Katrina Dlugosch and Michael S. Barker, Uni. of Arizona
-###
-### Todo: parallelize KaKs pipeline
 #####################################
 
 
