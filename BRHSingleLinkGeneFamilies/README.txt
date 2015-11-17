@@ -17,9 +17,12 @@
   NOTE: you can adapt the blast line according to the desired granularity, the defaults are e-value = 1e-3 and %similarity = 30%
 
 4. Run the pipeline
-perl BRHSingleLinkGeneFamilies_loader.pl NbCPUS MaxUse
-  - NbCPUS = Number of CPUs to allocate per blast search
-  - MaxUse = Maximum allowed load on the server 
+perl BRH_SingleLinkFamilies_build.pl minlen minsim NCPU MaxUse
+
+minlen = length over which sequences must match with each other
+minsim = minimum percentage of similarity between matching sequences
+NCPU = Number of cores to be used by each process
+MaxUse = Maximal load allowed on the computing server.
 
 
 ### Details
@@ -28,7 +31,7 @@ The pipeline will:
 2. Merge all fasta into a single file
 3. Run blast as follows:
   3.a	blast all-vs-all (blast line can be configured using config/blastline.conf; useful for adapting among blast flavors)
-  3.b	parse output to keep best hits (30% similarity and at least 300bp of overlap, can be adapted in ./BRHSingleLingGeneFamilies_loader.pl)
+  3.b	parse output to keep best hits (according to minsim and minlen)
 4. Perform single linkage clustering using pairwise best hits
 5. Produce fasta files of each gene family
 
