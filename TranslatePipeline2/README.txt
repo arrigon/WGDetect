@@ -1,7 +1,7 @@
 ### Purpose of the pipeline:
 - Compare input DNA sequences to a reference protein database
 - Keep only DNA sequences with hits in the protein DB
-- Excises, Frames and Translates the filtered DNA sequences 
+- Extracts, Frames and Translates the filtered DNA sequences 
   to produce outputs that are ready to be clustered into gene familes or aligned (if providing sequences from a single gene family).
 - Sequences that span over several genes are sliced into single CDS (that hopefully span the complete protein)
   the fasta headers are updated accordingly.
