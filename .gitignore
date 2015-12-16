@@ -10,7 +10,8 @@ KaKs/tmp
 *.annot
 *.idx 
 *.dmnd
-*.list 
+*.list
+
 Plants.list
 Plants2.list
 RunPipe*
