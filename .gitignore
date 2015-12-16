@@ -11,7 +11,8 @@ KaKs/tmp
 *.idx 
 *.dmnd
 *.list 
-
+Plants.list
+Plants2.list
 RunPipe*
 Poma.txt
 GitUpdates.txt
