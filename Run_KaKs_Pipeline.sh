@@ -53,7 +53,7 @@ minram=5	# RAM to leave free (Gb)
 maxload=24      # maximum server load allowed before starting a new job
 nslices=46      # slice input data into nslices subjobs (parallelize)
 
-tasks=234	# Flow control; run pipeline for a given set of tasks 
+tasks=1234	# Flow control; run pipeline for a given set of tasks 
 		# (to use in case of crash, or for running partial analyses).
 		# 1 = Exons cleaning (input = fas -> output = *.cds.fas, *.pep.fas, *.all.fas, *.annot)
 		# 2 = Clustering (input = *.cds.fas -> output = data.out/families/*.fas)
@@ -71,7 +71,7 @@ tasks=234	# Flow control; run pipeline for a given set of tasks
 		# - tasks=1	 runs only step 1, the same goes for running other unique steps
 
 ### Exon cleaning
-dbase=plant   # GenBank protein database to use. Check docs in TranslatePipeline2/
+dbase=vertebrate_other   # GenBank protein database to use. Check docs in TranslatePipeline2/
               # only plant is available for the moment. dbases are from ftp://ftp.ncbi.nlm.nih.gov/refseq/release/
               # consider using invertebrate, vertebrate_mammalian and vertebrate_other (use this exact spelling)
               # download scripts are available in TranslatePipeline2/bin, run them from TranslatePipeline2/refs
@@ -85,8 +85,8 @@ minsim=40       # minimum percentage of similarity between matching sequences
 ### Mixture model params
 ksmin=1e-9 #min ks (discard lower values)
 ksmax=2 #max ks (discard larger values)
-kmax=8 #max number of peaks being expected in Ks distribution, WARNING: analysis time increases with k
-boots=100 #bootstrapping effort during search for optimal number of peaks, 
+kmax=4 #max number of peaks being expected in Ks distribution, WARNING: analysis time increases with k
+boots=1 #bootstrapping effort during search for optimal number of peaks, 
 	        #WARNING: this is time consuming. Advised value is 1000
 epsilon=1e-3; #convergence criterion; heuristics are stopped when loglik is improved by less than epsilon
 

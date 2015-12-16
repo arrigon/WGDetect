@@ -10,7 +10,9 @@ KaKs/tmp
 *.annot
 *.idx 
 *.dmnd
+*.list 
 
-RunPipe.pl
+RunPipe*
 Poma.txt
 GitUpdates.txt
+Run_KaKs_Pipeline2.sh
