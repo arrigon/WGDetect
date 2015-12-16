@@ -1,6 +1,6 @@
 #!usr/bin/perl
 # Erik R Hanschen, modified Nils Arrigo
-# Written: Jan 21, 2012
+# Written: Dec 16, 2015
 use warnings;
 use strict;
 
@@ -23,7 +23,7 @@ print "Working...\n";
 while (my $line = <INFILE>) {
   chomp $line;
   my @array = split (/\t/, $line);
-  if (($array[0] ne $array[1]) and ($array[2] gt $percent) and ($array[3] gt $length)) {
+  if (($array[0] ne $array[1]) and ($array[2] >= $percent) and ($array[3] >= $length)) {
     my $orient = $array[9] - $array[8];
       if($orient >= 0){
       $orient = 1;
@@ -31,6 +31,7 @@ while (my $line = <INFILE>) {
       $orient = -1;
       }
     print OUTFILE "$array[0]\t$array[1]\t$orient\n";
+#     print OUTFILE "$array[0]\t$array[1]\t$orient\t$array[3]\t$array[2]\n";
     }
   }
 

@@ -3,7 +3,7 @@
 #####################################
 #### Add a given prefix to all headers in a fasta file
 ####
-####  perl PrefixFasta.pl fastafile prefix
+####  perl PrefixFasta.pl fastafile prefix outfolder
 #### Nils Arrigo, Unil 2015
 #####################################
 use File::Basename;
