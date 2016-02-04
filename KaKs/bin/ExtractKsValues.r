@@ -10,7 +10,7 @@ for(i in 1:length(args)){
   
   
 # list files to analyse
-listfiles = list.files(infolder, pattern = "2NG.dS", full.names = T, recursive = T)
+listfiles = list.files(infolder, pattern = "2ML.dS", full.names = T, recursive = T)
 
 
 # function to convert phylip file into distance matrix
@@ -33,22 +33,26 @@ for(infile in listfiles){
     x = rep(NA, ntax)
     tmp = splitfun(data[i])
     x[1:length(tmp)] = tmp
+    x[x == "-nan"] = NA
     MAT[i, ] = x
     }
-    
+  
   # compute quick WGMA tree and extract Ks values of nodes
   rownames(MAT) = colnames(MAT) = MAT[, 1]
   MAT = MAT[-1, -1]
   MAT = as.data.frame(MAT, stringsAsFactors = F)
   MAT = as.dist(MAT)
-  tre = hclust(MAT, method = "average")
+  if(mean(is.na(MAT)) < 1) {
+    MAT[is.na(MAT)] = median(MAT, na.rm = T)
+    tre = hclust(MAT, method = "average")
 
-  # extract node heights and save to output
-  heights = tre$height
-  heights = heights[heights >= 0]
-  if(length(heights) > 0){
-    write.table(cbind(heights), file = outfile, append = T, sep = "\t", quote = F, row.names = F, col.names = F)
-    Ks = c(Ks, heights)
+    # extract node heights and save to output
+    heights = tre$height
+    heights = heights[heights >= 0]
+    if(length(heights) > 0){
+      write.table(cbind(heights), file = outfile, append = T, sep = "\t", quote = F, row.names = F, col.names = F)
+      Ks = c(Ks, heights)
+      }
     }
   }
 

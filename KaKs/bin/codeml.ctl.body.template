@@ -1,8 +1,9 @@
 
         noisy = 3   * 0,1,2,3,9: how much rubbish on the screen
       verbose = 1   * 1: detailed output, 0: concise output
-      runmode = 0   * 0: user tree;  1: semi-automatic;  2: automatic
+      runmode = -2  * 0: user tree;  1: semi-automatic;  2: automatic
                     * 3: StepwiseAddition; (4,5):PerturbationNNI 
+                    * -2: ML method (tree not needed)
 
       seqtype = 1   * 1:codons; 2:AAs; 3:codons-->AAs
     CodonFreq = 2   * 0:1/61 each, 1:F1X4, 2:F3X4, 3:codon table
@@ -27,8 +28,10 @@
  RateAncestor = 1   * (1/0): rates (alpha>0) or ancestral states (alpha=0)
 
   fix_blength = 1  * 0: ignore, -1: random, 1: initial, 2: fixed
-       method = 0   * 0: simultaneous; 1: one branch at a time
+       method = 0  * 0: simultaneous; 1: one branch at a time
 
+    cleandata = 1  * keep only section of alignment that have no missing data (default when using runmode = -2)
+    
 * Specifications for duplicating results for the small data set in table 1
 * of Yang (1998 MBE 15:568-573).
 * see the tree file lysozyme.trees for specification of node (branch) labels
