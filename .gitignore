@@ -1,7 +1,15 @@
-BRHSingleLinkGeneFamilies/tmp
 TranslatePipeline2/tmp
+TranslatePipeline2/data.out/*
 TranslatePipeline2/refs/*.idx
+
+BRHSingleLinkGeneFamilies/tmp
+BRHSingleLinkGeneFamilies/data.out/families/*
+
 KaKs/tmp
+KaKs/data.out/*
+
+Ks_mixmodels/data.out/*
+
 data.in/*
 data.out/* 
 
@@ -15,6 +23,7 @@ data.out/*
 *.dmnd
 *.list
 
+PomaList.txt
 Plants.list
 Plants2.list
 RunPipe*
