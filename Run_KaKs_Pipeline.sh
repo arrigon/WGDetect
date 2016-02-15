@@ -53,7 +53,7 @@ minram=5	# RAM to leave free (Gb)
 maxload=24      # maximum server load allowed before starting a new job
 nslices=46      # slice input data into nslices subjobs (parallelize)
 
-tasks=1234	# Flow control; run pipeline for a given set of tasks 
+tasks=34	# Flow control; run pipeline for a given set of tasks 
 		# (to use in case of crash, or for running partial analyses).
 		# 1 = Exons cleaning (input = fas -> output = *.cds.fas, *.pep.fas, *.all.fas, *.annot)
 		# 2 = Clustering (input = *.cds.fas -> output = data.out/families/*.fas)
@@ -174,6 +174,7 @@ else
   if [[ $tasks =~ 3 ]]; then
     /bin/rm -rf data.out/families
     mkdir data.out/ data.out/families
+    cp -l ../data.in/*.aln data.out/families
     cp -l ../data.in/*.fas data.out/families
     cp -lr ../data.in/families data.out/
     fi
@@ -194,7 +195,16 @@ if [[ $tasks =~ 3 ]]; then
   echo "Computing DnDs"  
   echo 
   cd KaKs/
-  ./pipeline-macse-to-codeml.sh $maxload
+  
+  # check if input files are normal or aligned fasta
+  nfls=$(find data.in/*.aln -type f | wc -l)    
+  if [[ $nfls == 0 ]]; then #no aln files, we are thus dealing with normal fasta files
+    tasks=12
+  else
+    tasks=2
+  fi
+    
+  ./pipeline-macse-to-codeml.sh $maxload $tasks
   ln -s ../KaKs/tmp/macse_alignments ../data.out/Alignments
   ln -s ../KaKs/tmp/codeml_runs ../data.out/CodemlRuns
   ln -s ../KaKs/data.out ../data.out/KsValues

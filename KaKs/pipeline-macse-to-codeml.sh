@@ -22,7 +22,16 @@
 # files: 
 #   codeml.ctl.body.template  
 
-maxload=$1
+maxload=$1	
+tasks=$2 	# Flow control; run pipeline for a given set of tasks 
+		# (to use in case of crash, or for running partial analyses).
+		#1 = start from alignments, 
+		#2 = skip alignments and perform last steps (faster)
+		
+		# Examples: 
+		# - tasks = 12 runs the complete pipeline
+		# - tasks = 2 skips the alignment step
+
 
 echo "#####################################"
 echo "make sure we start fresh"  
@@ -32,18 +41,30 @@ echo "#####################################"
 echo 
 
 
+if [[ $tasks =~ 1 ]]; then
+  echo "#####################################"
+  echo "running macse alignments"  
+  echo 
+  mkdir tmp tmp/macse_alignments
+  ln data.in/*.fas tmp/macse_alignments
+  # ./bin/run-macse-aligner.sh
+  perl ./bin/run-macse-aligner.pl data.in tmp/macse_alignments $maxload
+  /bin/rm -f data.in/Fam.*_macse_AA.fasta
+  echo "macse alignments done"
+  echo "#####################################"
+  echo 
+else 
 echo "#####################################"
-echo "running macse alignments"  
-echo 
-mkdir tmp tmp/macse_alignments
-ln data.in/*.fas tmp/macse_alignments
-# ./bin/run-macse-aligner.sh
-perl ./bin/run-macse-aligner.pl data.in tmp/macse_alignments $maxload
-/bin/rm -f data.in/Fam.*_macse_AA.fasta
-echo "macse alignments done"
-echo "#####################################"
-echo 
+  echo "Skipping alignments"  
+  echo 
+  mkdir tmp tmp/macse_alignments
+  cp -l ../data.in/Fam.*aln tmp/macse_alignments
+  echo "#####################################"
+  echo 
+fi
 
+  
+  
 
 echo "#####################################"
 echo "converting fasta to paml format"
