@@ -2,7 +2,10 @@ BRHSingleLinkGeneFamilies/tmp
 TranslatePipeline2/tmp
 TranslatePipeline2/refs/*.idx
 KaKs/tmp
+data.in/*
+data.out/* 
 
+*.aln
 *.fas
 .Rdata
 *.Rout
