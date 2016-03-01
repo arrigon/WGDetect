@@ -16,8 +16,10 @@ my $target = $ARGV[1];
 my $outfolder = $ARGV[2];
 my $mode = $ARGV[3];
 my $NCPU = $ARGV[4];
+chomp($NCPU);
+
 my $bsn = basename($target);
-my $out = "$outfolder/$bsn.besthits.tmp";
+my $out = "$outfolder/$bsn.besthits";
 $scriptname = "RunParseBlastx";
 
 print "$NCPU";
@@ -29,7 +31,7 @@ chomp($ID);
 # $command = "blastall -p blastx -m 8 -d $db -i $target -e 1e-3 -P 90 -K 1 > $out";
 # $command = "blastall -p blastx -m 8 -d $db -i $target -e 1e-3 -P 90 -K 1 | cut -f2,11 -s > $out";
 # $command = "blastall -p blastx -m 8 -a $NCPU -d $db -i $target -e 1e-5 -P 50 | cut -f1,2,11 -s > $out.all"; #Version 2.2.26
-$command = "blastx -outfmt 6 -num\_threads $NCPU -db $db -query $target -evalue 1e-5 -num_alignments 50 | cut -f1,2,11 -s > $out.all"; #Blast Version 2.2.28+
+$command = "blastx -outfmt 6 -num\_threads $NCPU -db $db -query $target -evalue 1e-5 -num_alignments 100000 | cut -f1,2,11 -s > $out.all"; #Blast Version 2.2.28+
 print "### $scriptname : $command\n";
 system("$command");
 

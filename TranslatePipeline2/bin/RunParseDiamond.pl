@@ -19,12 +19,12 @@ my $NCPU = $ARGV[4];
 chomp($NCPU);
 
 my $bsn = basename($target);
-my $out = "$outfolder/$bsn.besthits.tmp";
+my $out = "$outfolder/$bsn.besthits";
 $scriptname = "RunParseDiamond";
 
 
 ## Run Diamond
-$command = "./bin/diamond blastx -d $db -q $target -p $NCPU -k 50000 -a $out";
+$command = "./bin/diamond blastx -d $db -q $target -p $NCPU -k 100000 --sensitive -a $out";
 print "### $scriptname : $command\n";
 system("$command");
 

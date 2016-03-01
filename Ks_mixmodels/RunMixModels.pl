@@ -85,7 +85,7 @@ foreach my $file (@list){
   print "Current CPU load is $load \n";
   if($load < $CPU) {
     print "OK --- start $file\n";
-    $command = "R CMD BATCH '--args infile=\"$file\" outfolder=\"$outfolder\" ksmin=$ksmin ksmax=$ksmax kmax=$kmax boots=$boots epsilon=$epsilon breaks=$breaks' bin/MixModelsKs.r $outfolder/$bsn.Rout &";
+    $command = "R CMD BATCH '--args infile=\"$file\" outfolder=\"$outfolder\" ksmin=$ksmin ksmax=$ksmax kmax=$kmax boots=$boots epsilon=$epsilon breaks=$breaks' bin/MixModelsKs.r $outfolder/$bsn.Rout";
     print "\n##########\n##########\nRUNNING:\n$command\n##########\n\n\n";
     system("$command");
     sleep(10);

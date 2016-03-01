@@ -37,7 +37,12 @@ $command = "perl bin/RunParseDiamond.pl refs/$db data.in/$genome tmp/genewise al
 print "### $scriptname : $command\n";
 system("$command");
 
+# $command = "perl bin/RunParseBlastx.pl refs/$db data.in/$genome tmp/genewise all $NCPU";
+# print "### $scriptname : $command\n";
+# system("$command");
+
+
 # run exonerate and parse out fasta files
-$command = "perl bin/RunParseExonerate.pl refs/$db data.in/$bsn tmp/genewise/$genome.besthits.tmp data.out/";
+$command = "perl bin/RunParseExonerate.pl refs/$db data.in/$bsn tmp/genewise/$genome.besthits.all data.out/";
 print "### $scriptname : $command\n";
 system("$command");

@@ -67,6 +67,12 @@ my $db = "Genbank\_$dbase.fas";
   
   
 # Prepare diamond and idx db for reference proteins (only if needed) 
+# unless(-e "refs/$db.pal"){
+#   $command = "makeblastdb -dbtype prot -in refs/$db"; #Blast Version 2.2.28+
+#   print "### $scriptname : $command\n";
+#   system("$command");
+#   }
+  
 unless(-e "refs/$db.dmnd"){
   $command = "./bin/diamond makedb --in refs/$db -d refs/$db";
   print "### $scriptname : $command\n";

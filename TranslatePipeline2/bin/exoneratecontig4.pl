@@ -13,15 +13,15 @@
 use File::Basename;
 use List::Util qw[min max];
 
+
 my $infile = $ARGV[0];
 my $outfile = $ARGV[1];
 my $type = $ARGV[2]; #either "all" or "cds"
 my $add = $ARGV[3];
 chomp($target);
-
-
 chomp($file1);
 chomp($ID);
+
 
 ## import Exonerate file
 open(FILE, "$infile");
@@ -32,8 +32,10 @@ my @fields = split(/\>/, $input);
 shift(@fields);
 close(FILE);
 
+
 ### skip headers with parameters
 shift @fields;
+
 
 ### load data into hash.
 my %fasta; #hash with start / stop coordinates of CDS
@@ -78,6 +80,7 @@ foreach $input (@fields){
 my @allstarts = keys(%fasta);
 @allstarts = sort{$a <=> $b} @allstarts;
 
+
 # Second, visit hash of CDS, following that order 
 # define non-overlapping stacks; and keep longest member of each stack.
 my $stacknr = 0; 
@@ -85,6 +88,7 @@ my $rightlim = 0; #rightmost extent of ongoing stack
 my %prtsII;
 my $maxrge = 0;
 my @keepprot; #array of protein numbers that will be kept after parsing
+
 
 # Attribute CDS within stacks
 my %fastaII;
@@ -132,10 +136,11 @@ foreach $start (@allstarts){ #visit CDS hash following increasing order of start
     }
   }
 
+  
 ### Organise CDS in stacks
 my %prts;
 foreach $stacknr (keys(%fastaII)){ #loop through all stacks
-  $maxcount = 0; # limit to max 15 CDS per stack
+  # $maxcount = 0; # limit to max 15 CDS per stack sed -i -- 's/J/I/g' Genbank_vertebrate.fas sed -i -- 's/J/I/g' Genbank_vertebrate.fas
   foreach $cdsnr (keys(%{$fastaII{$stacknr}})){ #loop through all cdsnr within protein name
     my $protein = $fastaII{$stacknr}{$cdsnr}{"protein"};
     my $start = $fastaII{$stacknr}{$cdsnr}{"start"};
@@ -143,10 +148,11 @@ foreach $stacknr (keys(%fastaII)){ #loop through all stacks
     $prts{$stacknr}{$cdsnr}{"protein"} = $cdsnr;
     $prts{$stacknr}{$cdsnr}{"start"} = $start;
     $prts{$stacknr}{$cdsnr}{"stop"} = $stop;
-    $maxcount++;
+    # $maxcount++;
     }
   }
 
+  
 ### Find longest CDS of each stack
 my %RES;
 foreach $stacknr (keys(%prts)){ #loop over stacks
@@ -181,6 +187,7 @@ foreach $stacknr (keys(%RES)){
   $fastaIII{$stacknr}{$cdsnr}{"seq"} = $fastaII{$stacknr}{$cdsnr}{"seq"};  
   }
 
+  
 #### SPLIT CDS and save as Fasta
 ## Print fasta, suffix different cds of proteins with distinct codes
 print "\nKeep best CDS of each stack:\nSTACKnr\tStart\tStop\tAnnotation\tSource\n";
@@ -215,6 +222,7 @@ foreach $stacknr (sort(keys(%fastaIII))){
     }
   }
 close(OUT);
+close(ANNOT);
 
 ########## SUBROUTINES
 ## remove whitespaces

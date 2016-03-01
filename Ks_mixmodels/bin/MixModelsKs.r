@@ -121,6 +121,6 @@ pdf(file = pdfname)
   
 ## Save outputs
 write.table(params, file = outname, sep = "\t", quote = F, col.names = T, row.names = F)
-save(objects(), file = binname)
+#save(objects(), file = binname)
 
 

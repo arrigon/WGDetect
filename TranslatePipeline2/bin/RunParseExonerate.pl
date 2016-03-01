@@ -30,7 +30,7 @@ open(PAIRS, $hitpairs);
 my %blast;
 while(<PAIRS>){
   chomp();
-  my @tmp = split(/\s+/, $_, 2);
+  my @tmp = split(/\s+/, $_);
   $idxdna = $tmp[0];
   chomp($idxdna);
   $idxprot = $tmp[1];
