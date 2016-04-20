@@ -199,12 +199,12 @@ if [[ $tasks =~ 3 ]]; then
   # check if input files are normal or aligned fasta
   nfls=$(find data.in/*.aln -type f | wc -l)    
   if [[ $nfls == 0 ]]; then #no aln files, we are thus dealing with normal fasta files
-    tasks=12
+    KAKSsteps=12
   else
-    tasks=2
+    KAKSsteps=2
   fi
     
-  ./pipeline-macse-to-codeml.sh $maxload $tasks
+  ./pipeline-macse-to-codeml.sh $maxload $KAKSsteps
   ln -s ../KaKs/tmp/macse_alignments ../data.out/Alignments
   ln -s ../KaKs/tmp/codeml_runs ../data.out/CodemlRuns
   ln -s ../KaKs/data.out ../data.out/KsValues
