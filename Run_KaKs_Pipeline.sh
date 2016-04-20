@@ -53,7 +53,7 @@ minram=5	# RAM to leave free (Gb)
 maxload=24      # maximum server load allowed before starting a new job
 nslices=46      # slice input data into nslices subjobs (parallelize)
 
-tasks=34	# Flow control; run pipeline for a given set of tasks 
+tasks=1234	# Flow control; run pipeline for a given set of tasks 
 		# (to use in case of crash, or for running partial analyses).
 		# 1 = Exons cleaning (input = fas -> output = *.cds.fas, *.pep.fas, *.all.fas, *.annot)
 		# 2 = Clustering (input = *.cds.fas -> output = data.out/families/*.fas)
