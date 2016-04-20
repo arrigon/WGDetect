@@ -1,5 +1,5 @@
 BRHSingleLinkGeneFamilies/tmp
-BRHSingleLinkGeneFamilies/data.out/families/*
+BRHSingleLinkGeneFamilies/data.out/families/*.fas
 
 TranslatePipeline2/tmp
 TranslatePipeline2/data.out/*
